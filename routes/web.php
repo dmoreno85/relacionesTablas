@@ -63,7 +63,7 @@ Route::get('collections', function () {
     dd($users->load('posts'));  //Dev la relacion con posts // posts por el la funcion configurada  public function posts() en User.php
 });
 
-Route::get('serialization', function () {
+Route::get('serialization', function () { //Serializacion es la forma de presentar datos ya sea en array o json
     $users = User::all(); //accedemos a TODOS los registros de la bbdd
     //dd($users->toArray());  //Dev un array
     $user = $users->find(1); //Asignamos a la variable $user el resultado de envontrar ID 1
