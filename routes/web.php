@@ -23,7 +23,7 @@ Route::get('eloquent', function () {
         ->orderBy('id', 'desc')
         ->take(3)
         ->get(); // Accedemos a la tabla posts de BBDD con un WHERE id >= '20', orderBy id desc i cogemos 3
-    foreach ($posts as $post) {
+    foreach ($posts as $post) { //get_title hace referencia al metodo creado en Post.php getGetTilteAttribute() 
         echo "$post->id $post->title <br>";
     }
 });
@@ -31,11 +31,12 @@ Route::get('eloquent', function () {
 Route::get('posts', function () {
     $posts = Post::get(); //accedemos a TODOS los registros de la bbdd
 
-    foreach ($posts as $post) {
+    foreach ($posts as $post) { //get_name hace referencia al metodo creado en User.php getGetNameAttribute() 
+                                //get_title hace referencia al metodo creado en Post.php getGetTilteAttribute() 
         echo "
         $post->id 
-        <strong>{$post->user->name }:  </strong>  
-        $post->title
+        <strong>{$post->user->get_name }:  </strong>  
+        $post->get_title
          <br>";
     }
 });
@@ -44,9 +45,10 @@ Route::get('users', function () {
     $users = User::all(); //accedemos a TODOS los registros de la bbdd
 
     foreach ($users as $user) {    // posts por el la funcion configurada  public function posts() en User.php
+                                   //get_name hace referencia al metodo creado en User.php getGetNameAttribute() 
         echo "
         $user->id 
-        <strong>{$user->name }:  </strong>  
+        <strong>{$user->get_name }:  </strong>  
         tiene {$user->posts->count()} posts.     
          <br>";
     }

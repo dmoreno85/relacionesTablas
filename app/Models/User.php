@@ -45,4 +45,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+                                          //Get hace la funcion cuando recibe datos de BBDD
+    public function getGetNameAttribute() //Para este metodo en necesariuo que el nombre de la funcion este entre get**Atribute
+    {
+        return strtoupper($this->name);
+    }
+                                          
+                                          //Set hace la funcion para guardar en BBDD
+    public function setNameAttribute($value) //Para este metodo en necesariuo cque el nombre de la funcion este entre set**Atribute
+    {
+         $this->attributes['name'] = strtolower($value);
+         
+    }
 }
